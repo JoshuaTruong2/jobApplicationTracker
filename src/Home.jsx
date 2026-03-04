@@ -82,7 +82,7 @@ const Home = () => {
       jobDescription: "",
       applicationDeadline: "",
       dateApplied: "",
-      status: 0,
+      status: "",
     },
   ]);
 

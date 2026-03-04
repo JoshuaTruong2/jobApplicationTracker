@@ -131,7 +131,7 @@ const MainTable = ({
             header: "Status",
             cell: (item) => (
               <Badge color={getStatusColor(item.status)}>
-                {STATUS_LABELS[item.status]?.label || "Unknown"}
+                {STATUS_LABELS[item.status]?.label || "-"}
               </Badge>
             ),
           },
