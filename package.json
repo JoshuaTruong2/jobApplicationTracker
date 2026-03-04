@@ -15,7 +15,7 @@
     "@cloudscape-design/global-styles": "^1.0.50",
     "cors": "^2.8.5",
     "dotenv": "^17.2.4",
-    "express": "^5.2.1",
+    "express": "^4.22.1",
     "lucide-react": "^0.539.0",
     "mammoth": "^1.10.0",
     "node-fetch": "^2.7.0",
