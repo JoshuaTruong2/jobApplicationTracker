@@ -66,7 +66,7 @@ export const analyzeJobAlignment = async (application, resumeData) => {
   console.log(`Analyzing: ${application.role} at ${application.company}`);
 
   try {
-const prompt = `You are an expert career advisor and ATS (Applicant Tracking System) analyst. Analyze how well this resume matches the job posting.
+    const prompt = `You are an expert career advisor and ATS (Applicant Tracking System) analyst. Analyze how well this resume matches the job posting.
 
 RESUME:
 ${resumeData.rawText.substring(0, 3000)}
@@ -102,7 +102,7 @@ Return ONLY valid JSON (no markdown, no code blocks):
   "analysis": "<2-3 sentence summary of match quality and key strengths>",
   "recommendations": ["<specific action 1>", "<specific action 2>", "<specific action 3>"]
 }`;
-    const response = await fetch("http://localhost:3001/api/gemini-analyze", {
+    const response = await fetch("/api/gemini-analyze", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
