@@ -104,20 +104,6 @@ const Home = () => {
     }
   }, [applications]);
 
-  useEffect(() => {
-    if (resumeAnalysis) {
-      applications.forEach((app) => {
-        if (
-          app.jobDescription &&
-          !app.analysis &&
-          !analyzingApplications.has(app.id)
-        ) {
-          analyzeAndUpdateApp(app.id);
-        }
-      });
-    }
-  }, [resumeAnalysis, applications]);
-
   const handleAddApplication = async (newApp) => {
     setApplications([...applications, newApp]);
 
@@ -125,6 +111,20 @@ const Home = () => {
       analyzeAndUpdateApp(newApp.id);
     }
   };
+  useEffect(() => {
+    if (resumeAnalysis) {
+      applications.forEach((app) => {
+        if (
+          app.jobDescription &&
+          !analyzingApplications.has(app.id) &&
+          (!app.analysis?.matchScore || !app.analysis?.recommendations?.length)
+        ) {
+          analyzeAndUpdateApp(app.id);
+        }
+      });
+    }
+  }, [resumeAnalysis]);
+
   const handleDeleteApplication = (id) => {
     setApplications(applications.filter((app) => app.id != id));
   };
