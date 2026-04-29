@@ -45,8 +45,8 @@ const Home = () => {
     }
   };
 
-  const analyzeAndUpdateApp = async (appId) => {
-    const app = applications.find((a) => a.id === appId);
+  const analyzeAndUpdateApp = async (appId, appData = null) => {
+    const app = appData || applications.find((a) => a.id === appId);
     if (!app || !resumeAnalysis || !app.jobDescription) return;
 
     setAnalyzingApplications((prev) => new Set(prev).add(appId));
@@ -107,9 +107,13 @@ const Home = () => {
   const handleAddApplication = async (newApp) => {
     setApplications([...applications, newApp]);
 
-    if (resumeAnalysis && newApp.jobDescription) {
-      analyzeAndUpdateApp(newApp.id);
-    }
+    const handleAddApplication = async (newApp) => {
+      setApplications([...applications, newApp]);
+
+      if (resumeAnalysis && newApp.jobDescription) {
+        analyzeAndUpdateApp(newApp.id, newApp);
+      }
+    };
   };
   useEffect(() => {
     if (resumeAnalysis) {
