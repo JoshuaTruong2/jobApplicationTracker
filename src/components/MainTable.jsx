@@ -217,7 +217,7 @@ const MainTable = ({
           },
           {
             id: "dateApplied",
-            header: "Applied",
+            header: "Date applied",
             cell: (item) => item.dateApplied || "-",
           },
           {
