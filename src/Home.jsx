@@ -107,14 +107,11 @@ const Home = () => {
   const handleAddApplication = async (newApp) => {
     setApplications([...applications, newApp]);
 
-    const handleAddApplication = async (newApp) => {
-      setApplications([...applications, newApp]);
-
-      if (resumeAnalysis && newApp.jobDescription) {
-        analyzeAndUpdateApp(newApp.id, newApp);
-      }
-    };
+    if (resumeAnalysis && newApp.jobDescription) {
+      analyzeAndUpdateApp(newApp.id, newApp);
+    }
   };
+
   useEffect(() => {
     if (resumeAnalysis) {
       applications.forEach((app) => {
